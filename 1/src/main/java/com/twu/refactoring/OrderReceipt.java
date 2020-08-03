@@ -27,6 +27,7 @@ public class OrderReceipt {
 //      output.append(order.getCustomerLoyaltyNumber());
 
 		// prints lineItems
+
 		double totSalesTx = 0d;
 		double total = 0d;
 		for (LineItem lineItem : order.getLineItems()) {
