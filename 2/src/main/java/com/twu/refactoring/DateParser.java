@@ -26,12 +26,32 @@ public class DateParser {
         this.dateAndTimeString = dateAndTimeString;
     }
 
+    private int getYear(){
+        String yearString = dateAndTimeString.substring(0, 4);
+        return Integer.parseInt(yearString);
+    }
+    private int getMonth(){
+        String monthString = dateAndTimeString.substring(5, 7);
+        return Integer.parseInt(monthString);
+    }
+    private  int getDate(){
+        String dateString = dateAndTimeString.substring(8, 10);
+        return Integer.parseInt(dateString);
+    }
+    private int getHour(){
+        String hourString = dateAndTimeString.substring(11, 13);
+        return Integer.parseInt(hourString);
+    }
+    private int getMinute(){
+        String minuteString = dateAndTimeString.substring(14, 16);
+        return Integer.parseInt(minuteString);
+    }
     public Date parse() {
         int year, month, date, hour, minute;
 
+
         try {
-            String yearString = dateAndTimeString.substring(0, 4);
-            year = Integer.parseInt(yearString);
+            year = this.getYear();
         } catch (StringIndexOutOfBoundsException e) {
             throw new IllegalArgumentException("Year string is less than 4 characters");
         } catch (NumberFormatException e) {
@@ -41,8 +61,7 @@ public class DateParser {
             throw new IllegalArgumentException("Year cannot be less than 2000 or more than 2012");
 
         try {
-            String monthString = dateAndTimeString.substring(5, 7);
-            month = Integer.parseInt(monthString);
+            month = this.getMonth();
         } catch (StringIndexOutOfBoundsException e) {
             throw new IllegalArgumentException("Month string is less than 2 characters");
         } catch (NumberFormatException e) {
@@ -52,8 +71,7 @@ public class DateParser {
             throw new IllegalArgumentException("Month cannot be less than 1 or more than 12");
 
         try {
-            String dateString = dateAndTimeString.substring(8, 10);
-            date = Integer.parseInt(dateString);
+            date = this.getDate();
         } catch (StringIndexOutOfBoundsException e) {
             throw new IllegalArgumentException("Date string is less than 2 characters");
         } catch (NumberFormatException e) {
@@ -67,8 +85,7 @@ public class DateParser {
             minute = 0;
         } else {
             try {
-                String hourString = dateAndTimeString.substring(11, 13);
-                hour = Integer.parseInt(hourString);
+                hour = this.getHour();
             } catch (StringIndexOutOfBoundsException e) {
                 throw new IllegalArgumentException("Hour string is less than 2 characters");
             } catch (NumberFormatException e) {
@@ -78,8 +95,7 @@ public class DateParser {
                 throw new IllegalArgumentException("Hour cannot be less than 0 or more than 23");
 
             try {
-                String minuteString = dateAndTimeString.substring(14, 16);
-                minute = Integer.parseInt(minuteString);
+                minute = this.getMinute();
             } catch (StringIndexOutOfBoundsException e) {
                 throw new IllegalArgumentException("Minute string is less than 2 characters");
             } catch (NumberFormatException e) {
