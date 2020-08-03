@@ -20,6 +20,14 @@ public class Customer {
 		return name;
 	}
 
+	private int amountFor2DaysRegular = 2;
+	private int basicDayForRegular = 2;
+	private double rateForRegular = 1.5;
+	private int rateForNewRelease = 3;
+	private double amountFor3DaysChildren = 1.5;
+	private int basicDayForChildren = 3;
+	private double rateForChildren = 1.5;
+
 	public String statement() {
 		double totalAmount = 0;
 		int frequentRenterPoints = 0;
@@ -29,22 +37,20 @@ public class Customer {
 			double thisAmount = 0;
 			Rental each = rentals.next();
 
-			// determine amounts for each line
 			switch (each.getMovie().getPriceCode()) {
 			case Movie.REGULAR:
-				thisAmount += 2;
-				if (each.getDaysRented() > 2)
-					thisAmount += (each.getDaysRented() - 2) * 1.5;
+				thisAmount += amountFor2DaysRegular;
+				if (each.getDaysRented() > basicDayForRegular)
+					thisAmount += (each.getDaysRented() - basicDayForRegular) * rateForRegular;
 				break;
 			case Movie.NEW_RELEASE:
-				thisAmount += each.getDaysRented() * 3;
+				thisAmount += each.getDaysRented() * rateForNewRelease;
 				break;
 			case Movie.CHILDRENS:
-				thisAmount += 1.5;
-				if (each.getDaysRented() > 3)
-					thisAmount += (each.getDaysRented() - 3) * 1.5;
+				thisAmount += amountFor3DaysChildren;
+				if (each.getDaysRented() > basicDayForChildren)
+					thisAmount += (each.getDaysRented() - basicDayForChildren) * rateForChildren;
 				break;
-
 			}
 
 			// add frequent renter points
