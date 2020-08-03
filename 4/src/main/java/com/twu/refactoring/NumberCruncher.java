@@ -7,35 +7,37 @@ public class NumberCruncher {
         this.numbers = numbers;
     }
 
-    public int countEven() {
-        int count = 0;
-        for (int number : numbers) {
-            if (number % 2 == 0) count++;
+    int evenNumber = 0;
+    int oddNumber = 0;
+    int positiveNumber = 0;
+    int negativeNumber = 0;
+
+    void countEachType(){
+        for (int number : this.numbers) {
+            if (number % 2 == 0) this.evenNumber++;
+            if (number % 2 == 1) this.oddNumber++;
+            if (number >= 0) this.positiveNumber++;
+            if (number >= 0) this.negativeNumber++;
         }
-        return count;
+    }
+
+    public int countEven() {
+        this.countEachType();
+        return this.evenNumber;
     }
 
     public int countOdd() {
-        int count = 0;
-        for (int number : numbers) {
-            if (number % 2 == 1) count++;
-        }
-        return count;
+        this.countEachType();
+        return this.oddNumber;
     }
 
     public int countPositive() {
-        int count = 0;
-        for (int number : numbers) {
-            if (number >= 0) count++;
-        }
-        return count;
+        this.countEachType();
+        return this.positiveNumber;
     }
 
     public int countNegative() {
-        int count = 0;
-        for (int number : numbers) {
-            if (number < 0) count++;
-        }
-        return count;
+        this.countEachType();
+        return this.negativeNumber;
     }
 }
