@@ -3,9 +3,9 @@ package com.twu.refactoring;
 import java.util.List;
 
 public class Order {
-    String nm;
-    String addr;
-    List<LineItem> li;
+    private String nm;
+    private String addr;
+    private List<LineItem> li;
 
     public Order(String nm, String addr, List<LineItem> li) {
         this.nm = nm;
